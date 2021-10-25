@@ -206,12 +206,16 @@ class _PhotoFilterSelectorState extends State<PhotoFilterSelector> {
               if (snapshot.hasError)
                 return Center(child: Text('Error: ${snapshot.error}'));
               cachedFilters[filter.name] = snapshot.data;
-              return CircleAvatar(
-                radius: 50.0,
-                backgroundImage: MemoryImage(
-                  snapshot.data as dynamic,
+              return Container(
+                width: 50.0,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  image: DecorationImage(
+                    image: MemoryImage(
+                      snapshot.data as dynamic,
+                    ),
+                  ),
                 ),
-                backgroundColor: Colors.white,
               );
           }
           // unreachable
