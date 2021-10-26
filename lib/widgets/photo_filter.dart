@@ -195,23 +195,25 @@ class _PhotoFilterSelectorState extends State<PhotoFilterSelector> {
             case ConnectionState.none:
             case ConnectionState.active:
             case ConnectionState.waiting:
-              return CircleAvatar(
-                radius: 50.0,
+              return Container(
+                width: 80.0,
+                height: 80.0,
                 child: Center(
                   child: widget.loader,
                 ),
-                backgroundColor: Colors.white,
+                // backgroundColor: Colors.white,
               );
             case ConnectionState.done:
               if (snapshot.hasError)
                 return Center(child: Text('Error: ${snapshot.error}'));
               cachedFilters[filter.name] = snapshot.data;
               return Container(
-                width: 50.0,
-                height: 50.0,
+                width: 80.0,
+                height: 80.0,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   image: DecorationImage(
+                    fit: BoxFit.cover,
                     image: MemoryImage(
                       snapshot.data as dynamic,
                     ),
@@ -224,11 +226,12 @@ class _PhotoFilterSelectorState extends State<PhotoFilterSelector> {
       );
     } else {
       return Container(
-        width: 50.0,
-        height: 50.0,
+        width: 80.0,
+        height: 80.0,
         decoration: BoxDecoration(
           color: Colors.white,
           image: DecorationImage(
+            fit: BoxFit.cover,
             image: MemoryImage(
               cachedFilters[filter.name] as dynamic,
             ),
