@@ -208,6 +208,7 @@ class _PhotoFilterSelectorState extends State<PhotoFilterSelector> {
               cachedFilters[filter.name] = snapshot.data;
               return Container(
                 width: 50.0,
+                height: 50.0,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   image: DecorationImage(
@@ -222,12 +223,17 @@ class _PhotoFilterSelectorState extends State<PhotoFilterSelector> {
         },
       );
     } else {
-      return CircleAvatar(
-        radius: 50.0,
-        backgroundImage: MemoryImage(
-          cachedFilters[filter.name] as dynamic,
+      return Container(
+        width: 50.0,
+        height: 50.0,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: MemoryImage(
+              cachedFilters[filter.name] as dynamic,
+            ),
+          ),
         ),
-        backgroundColor: Colors.white,
       );
     }
   }
